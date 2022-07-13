@@ -47,7 +47,15 @@ code {
 .sg-task.green {
   background-color: rgb(188, 235, 194);
 }
-
+.sg-task.lightblue {
+  background-color: rgb(142, 207, 250);
+}
+.sg-task.darkblue {
+  background-color: rgb(58, 86, 105);
+}
+.sg-task.red {
+  background-color: rgb(248, 91, 91);
+}
 .sg-task.green:hover {
   background-color: rgb(143, 197, 150);
 }
@@ -98,4 +106,9 @@ code {
   color: white;
   font-family: 'Lato', sans-serif;
   z-index: 10;
+}
+.sg-task-content{
+  color: black;
+  font-weight: bold;
+  margin-left: -90px;
 }

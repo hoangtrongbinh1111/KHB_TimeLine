@@ -4,7 +4,7 @@ export function time(input) {
     return moment(input, 'HH:mm');
 }
 
-const colors = ['blue', 'green', 'orange']
+const colors = ['blue', 'green', 'orange','red']
 let generation = 0;
 let rowCount = 10;
 
@@ -27,7 +27,7 @@ export function generate() {
             type: 'task',
             id: 1,
             resourceId: 1,
-            label: "NAM",
+            label: "846- 95min     NAM",
             from: time(`7:30`),
             to: time(`9:20`),
             classes: "green",
@@ -37,7 +37,7 @@ export function generate() {
             type: 'task',
             id: 2,
             resourceId: 2,
-            label: 'NAM',
+            label: '846- 95min     NAM',
             from: time(`9:50`),
             to: time(`11:20`),
             classes: "green",
@@ -47,7 +47,7 @@ export function generate() {
             type: 'task',
             id: 3,
             resourceId: 3,
-            label: 'NAM',
+            label: '846- 95min     NAM',
             from: time(`6:00`),
             to: time(`17:00`),
             classes: "orange",
@@ -57,17 +57,17 @@ export function generate() {
             type: 'task',
             id: 4,
             resourceId: 4,
-            label: 'NAM',
+            label: '846- 95min     NAM',
             from: time(`7:45`),
             to: time(`10:10`),
-            classes: "blue",
+            classes: "darkblue",
             generation
         },
         {
             type: 'task',
             id: 5,
             resourceId: 5,
-            label: 'NAM',
+            label: '846- 95min     NAM',
             from: time(`7:20`),
             to: time(`9:25`),
             classes: "blue",
@@ -77,20 +77,20 @@ export function generate() {
             type: 'task',
             id: 6,
             resourceId: 6,
-            label: 'NAM',
+            label: '846- 95min     NAM',
             from: time(`7:00`),
             to: time(`17:00`),
-            classes: "orange",
+            classes: "lightblue",
             generation
         },
         {
             type: 'task',
             id: 7,
             resourceId: 7,
-            label: 'NAM',
+            label: '846- 95min     NAM',
             from: time(`7:20`),
             to: time(`9:40`),
-            classes: "blue",
+            classes: "red",
             generation
         },
     ];

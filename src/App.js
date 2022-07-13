@@ -9,27 +9,7 @@ const currentStart = time('00:00');
 const currentEnd = time('23:55');
 
 const { rows, tasks, dependencies } = generate();
-function createPopup(task, node) {
-  const rect = node.getBoundingClientRect();
-  const div = document.createElement('div');
-  div.className = 'sg-popup';
-  div.innerHTML = `
-      <div class="sg-popup-title">${task.label}</div>
-      <div class="sg-popup-item">
-          <div class="sg-popup-item-label">From:</div>
-          <div class="sg-popup-item-value">${new Date(task.from).toLocaleTimeString()}</div>
-      </div>
-      <div class="sg-popup-item">
-          <div class="sg-popup-item-label">To:</div>
-          <div class="sg-popup-item-value">${new Date(task.to).toLocaleTimeString()}</div>
-      </div>
-  `;
-  div.style.position = 'absolute';
-  div.style.top = `${rect.bottom}px`;
-  div.style.left = `${rect.left + rect.width / 2}px`;
-  document.body.appendChild(div);
-  return div;
-}
+
 const options = {
   rows,
   tasks,
@@ -46,31 +26,85 @@ const options = {
   ganttTableModules: [SvelteGanttTable],
   ganttBodyModules: [SvelteGanttDependencies],
   taskElementHook: (node, task) => {
-    console.log(111111111111111111);
-    // let popup;
-    // function onHover() {
-    //   console.log('[task] hover', task);
-    //   popup = createPopup(task, node);
-    // }
-    // function onLeave() {
-    //   console.log('[task] hover', task);
-    //   if (popup) {
-    //     popup.remove();
-    //   }
-    // }
-    // node.addEventListener('mouseenter', onHover);
-    // node.addEventListener('mouseleave', onLeave);
-    // return {
-    //   destroy() {
-    //     console.log('[task] destroy');
-    //     node.removeEventListener('mouseenter', onHover);
-    //     node.removeEventListener('mouseleave', onLeave);
-    //   }
-    // }
+    
+    let popup;
+    function onHover() {
+        
+        popup = createPopup(task, node);
+    }
+    function onLeave() {
+        
+        if(popup) {
+            popup.remove();
+        }
+    }
+    node.addEventListener('mouseenter', onHover);
+    node.addEventListener('mouseleave', onLeave);
+    return {
+        destroy() {
+            console.log('[task] destroy');
+            node.removeEventListener('mouseenter', onHover);
+            node.removeEventListener('mouseleave', onLeave);
+        }
+    }
   },
   // taskContent: (task) => `${task.label} ${task.from.format('HH:mm')}`
 }
-
+function createPopup(task, node) {
+  
+  const rect = node.getBoundingClientRect();
+  const div = document.createElement('div');
+  div.className = 'sg-popup';
+  div.innerHTML = `
+     
+      <div class="sg-popup-item">
+          <div class="sg-popup-item-label">Chuyến bay: TM22/58. Máy bay:846. Tổ bay: BINHHT, HIEUDO</div>
+          
+      </div>
+      <div class="sg-popup-item">
+          <div class="sg-popup-item-label">Đường bay: VT-BK20-P1-CTK3. Nhiệm vụ: . Công ty: Nam</div>
+          
+      </div>
+      <div class="sg-popup-item">
+          <div class="sg-popup-item-label">ETD: 09:45:00. ETA: 11:25:00</div>
+          
+      </div>
+      
+      <div class="sg-popup-item">
+          <div class="sg-popup-item-label">ATD: 09:50:00. ATA: 11:25:00</div>
+          
+      </div>
+      <div class="sg-popup-item">
+          <div class="sg-popup-item-label">Hoạt động 95 min. Còn lại 0 min</div>
+          
+      </div>
+      <div class="sg-popup-item">
+          <div class="sg-popup-item-label">Giờ thân máy bay: 121097h43</div>
+          
+      </div>
+      <div class="sg-popup-item">
+          <div class="sg-popup-item-label">Ngày nhập giờ thân máy bay: 09/01/2009</div>
+          
+      </div>
+      <div class="sg-popup-item">
+          <div class="sg-popup-item-label">Thời gian dừng: 0h</div>
+          
+      </div>
+      <div class="sg-popup-item">
+          <div class="sg-popup-item-label">Ghi chú:</div>
+          
+      </div>
+      
+  `;
+  div.style.backgroundColor='white'
+  div.style.margin='10px'
+  div.style.zIndex=99;
+  div.style.position = 'absolute';
+  div.style.top = `${rect.bottom}px`;
+  div.style.left = `${rect.left + rect.width / 2}px`;
+  document.body.appendChild(div);
+  return div;
+}
 function App() {
   const [opts, setOptions] = useState(options);
 
