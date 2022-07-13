@@ -1,8 +1,6 @@
 import React from 'react';
 import { SvelteGantt, SvelteGanttTable } from 'svelte-gantt';
 import * as Moment from 'moment';
-import 'svelte-gantt/css/svelteGantt.css';
-
 export class SvelteGanttReact extends React.Component {
 
     componentWillReceiveProps(nextProps) {
@@ -23,8 +21,7 @@ export class SvelteGanttReact extends React.Component {
         });
 
         // expose api
-        this.instance.api.tasks.on.select(([data]) => console.log('Listener: task change', data));
-        this.api = this.instance.api;
+       
     }
 
     render() {
